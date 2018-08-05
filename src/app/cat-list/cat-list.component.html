@@ -1,0 +1,37 @@
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h3 class="title is-3">Cats!</h3>
+    <article class="notification is-primary"
+             style="margin-bottom:10px;"
+             *ngIf="catdeleted">
+      <button class="delete"></button>
+      Cat created!
+    </article>
+    <article class="notification is-danger" *ngIf="error">
+      Cat failed! -- {{error}}
+    </article>
+    <div class="card" *ngFor="let cat of cats">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img [src]="cat.image" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">{{cat.name}}</p>
+            <div class="column">
+              <span class="tag is-info">Long Hair: {{cat.longHair || 'N/A'}}</span>
+              <span class="tag is-info">Sex : {{cat.sex || 'N/A'}}</span>
+              <span class="tag is-info">Tail: {{cat.tail || 'N/A'}}</span>
+            </div>
+            <div class="column">
+              <button class="button is-danger" (click)="deleteCat(cat.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

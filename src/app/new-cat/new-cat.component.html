@@ -1,0 +1,87 @@
+<section class="section" [formGroup]="newCat">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="notification is-primary"
+                 style="margin-bottom:10px;"
+                 *ngIf="catCreated && !newCat.dirty">
+          <button class="delete"></button>
+          Cat created!
+        </article>
+        <article class="notification is-danger" *ngIf="error">
+          Cat failed! -- {{error}}
+        </article>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half box">
+        <h3 class="title is-3">New Cat</h3>
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="name"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="description">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Sex</label>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" formControlName="sex" value="male">
+              Male
+            </label>
+            <label class="radio">
+              <input type="radio" formControlName="sex" value="female">
+              Female
+            </label>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" formControlName="longHair">
+              Long Hair
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" formControlName="tail">
+              Tail
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label for="">Image</label>
+            <input type="file" #uploadImage/>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-pulled-right" style="margin-top:25px;">
+          <div class="control">
+            <button class="button is-text">Cancel</button>
+          </div>
+          <div class="control">
+            <button class="button is-link"
+                    [ngClass]="{'is-loading': loading}"
+                    (click)="createCat()">Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
